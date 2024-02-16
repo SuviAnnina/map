@@ -46,7 +46,7 @@ export default function App() {
           Keyboard.dismiss();
           setAddress("");
         } else {
-          Alert.alert("No results found for address " + address);
+          Alert.alert("No results found for " + address);
         }
       })
       .catch(err => {
@@ -54,41 +54,34 @@ export default function App() {
       })
   }
 
-
-
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
 
-      {/* <View style={styles.container}> */}
-
       <MapView
         region={mapRegion}
         style={styles.mapStyle}
       >
-
         <Marker
           coordinate={coordinates}
         />
       </MapView>
 
-
-      <View>
+      <View style={{ width: "100%" }}>
         <TextInput
           placeholder="Type an address"
           style={styles.TextInput}
           value={address}
           onChangeText={text => setAddress(text)}
+
         />
         <Button title="Show"
           onPress={fetchCoordinates}
         />
       </View>
       <StatusBar style="auto" />
-      {/* </View> */}
     </KeyboardAvoidingView>
   );
 }
@@ -102,6 +95,8 @@ const styles = StyleSheet.create({
   },
   TextInput: {
     fontSize: 18,
+    textAlign: 'center',
+    marginTop: 20,
   },
   mapStyle: {
     width: "100%",

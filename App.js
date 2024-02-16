@@ -7,13 +7,21 @@ export default function App() {
 
   const [address, setAddress] = useState("");
 
-  console.log(address);
+  const mapRegion = {
+    latitude: 60.192059,
+    longitude: 24.945831,
+    latitudeDelta: 0.0322,
+    longitudeDelta: 0.0221,
+  }
 
 
   return (
     <View style={styles.container}>
 
-
+      <MapView
+        region={mapRegion}
+        style={styles.mapStyle}
+      />
 
       <View>
         <TextInput
@@ -39,5 +47,10 @@ const styles = StyleSheet.create({
   },
   TextInput: {
     fontSize: 18,
-  }
+  },
+  mapStyle: {
+    width: "100%",
+    height: "85%",
+  },
+
 });

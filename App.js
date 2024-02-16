@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, View, Button, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, Button, TextInput, Alert, KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
 
 export default function App() {
@@ -36,12 +36,15 @@ export default function App() {
             ...mapRegion,
             latitude: latitudeFloat,
             longitude: longitudeFloat
-          })
+          });
 
           setCoordinates({
             latitude: latitudeFloat,
             longitude: longitudeFloat
           });
+
+          Keyboard.dismiss();
+          setAddress("");
         } else {
           Alert.alert("No results found for address " + address);
         }
@@ -55,7 +58,12 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+    >
+
+      {/* <View style={styles.container}> */}
 
       <MapView
         region={mapRegion}
@@ -80,7 +88,8 @@ export default function App() {
         />
       </View>
       <StatusBar style="auto" />
-    </View>
+      {/* </View> */}
+    </KeyboardAvoidingView>
   );
 }
 

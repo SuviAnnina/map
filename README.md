@@ -1,5 +1,5 @@
 ### Map app  
-Mobile map app that utilizes [React Native Maps](https://github.com/react-native-maps/react-native-maps) and [Geocoding API](https://geocode.maps.co/). User may give either address or place name (eg. "Linnanmäki amusement park") and the location will be rendered on the map. If the given address does not exist, the user is alerted.
+Mobile map app that utilizes [React Native Maps](https://github.com/react-native-maps/react-native-maps) and [Geocoding API](https://geocode.maps.co/). User may give either address or place name (eg. "Linnanmäki amusement park") and the location will be rendered on the map. If the given address does not exist, the user is alerted. On first load the app will ask permission for users current location information, which can be granted or denied. While the app is fetching either current location data or coordinates, an activity indicator will take place on the bottom of the screen.  
 
 #### Screenshots  
 If user gives permission for location data, app renders users location on the map on first load
